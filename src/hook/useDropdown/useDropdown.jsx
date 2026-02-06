@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import styles from './useDropdown.module.css';
 
 const useDropdown = () => {
   const [visible, setVisible] = useState(false);
@@ -11,22 +10,11 @@ const useDropdown = () => {
   };
   const close = () => setVisible(false);
 
-  const dropdown = (
-    <div
-      className={
-        styles.dropdownContainer + (visible ? ` ${styles.visible}` : '')
-      }
-      style={{ left: coord.x, top: coord.y }}
-    >
-      <button>Waldo</button>
-    </div>
-  );
-
   return {
     open,
     close,
     visible,
-    dropdown,
+    coord
   };
 };
 

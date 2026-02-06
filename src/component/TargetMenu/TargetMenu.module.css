@@ -1,9 +1,4 @@
 .dropdownContainer {
   position: absolute;
   display: flex;
-  visibility: hidden;
-}
-
-.visible {
-  visibility: visible;
 }
