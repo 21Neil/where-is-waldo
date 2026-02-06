@@ -1,8 +1,6 @@
 .gameboard {
   position: relative;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
   height: 100%;
 
   img {

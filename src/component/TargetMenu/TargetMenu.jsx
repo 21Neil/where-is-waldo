@@ -6,7 +6,12 @@ const TargetMenu = ({ coord }) => {
       className={styles.dropdownContainer}
       style={{ left: coord.x, top: coord.y }}
     >
-      <button>Waldo</button>
+      <ul>
+        <li><button>Waldo</button></li>
+        <li><button>Wanda</button></li>
+        <li><button>wizard</button></li>
+        <li><button>odlaw</button></li>
+      </ul>
     </div>
   );
 };
