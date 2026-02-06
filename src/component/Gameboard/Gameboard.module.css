@@ -1,7 +1,7 @@
 .gameboard {
   position: relative;
   display: flex;
-  height: 100%;
+  height: calc(100vh - 150px);
 
   img {
     width: 100%;

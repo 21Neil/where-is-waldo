@@ -1,12 +1,14 @@
 .targetList {
   background: #ff0000;
+  height: 150px;
 }
 
 .targetList ul {
+  height: 100%;
   display: flex;
-  padding: 20px;
   gap: 16px;
   justify-content: center;
+  align-items: center;
   margin: 0;
 }
 

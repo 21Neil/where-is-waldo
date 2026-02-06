@@ -18,7 +18,7 @@ const TargetList = () => {
         </li>
         <li>
           <img src='/src/assets/odlaw.webp' alt='Odlaw' />
-          <span>odlaw</span>
+          <span>Odlaw</span>
         </li>
       </ul>
     </div>
