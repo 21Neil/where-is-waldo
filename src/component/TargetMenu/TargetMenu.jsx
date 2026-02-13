@@ -1,10 +1,11 @@
 import styles from './TargetMenu.module.css';
 
-const TargetMenu = ({ coord }) => {
+const TargetMenu = ({ ref, coord, visible }) => {
   return (
     <div
-      className={styles.container}
+      className={`${styles.container} ${ visible ? styles.visible : ''}`}
       style={{ left: coord.x, top: coord.y }}
+      ref={ref}
     >
       <ul>
         <li><button>Waldo</button></li>

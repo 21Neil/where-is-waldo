@@ -2,7 +2,7 @@ import styles from './TargetList.module.css';
 
 const TargetList = () => {
   return (
-    <div className={styles.targetList}>
+    <footer className={styles.targetList}>
       <ul>
         <li>
           <img src='/src/assets/waldo.webp' alt='Waldo' />
@@ -21,7 +21,7 @@ const TargetList = () => {
           <span>Odlaw</span>
         </li>
       </ul>
-    </div>
+    </footer>
   );
 };
 

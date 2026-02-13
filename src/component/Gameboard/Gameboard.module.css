@@ -1,11 +1,19 @@
 .gameboard {
   position: relative;
-  display: flex;
-  height: calc(100vh - 150px);
+  height: calc(100dvh - 150px);
+  display: block;
+  overflow: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: #e00000 white;
+}
 
-  img {
-    width: 100%;
-    display: block;
-    object-fit: contain;
+.gameboard img {
+  display: block;
+  object-fit: contain;
+}
+
+@media screen and (max-width: 576px) {
+  .gameboard {
+    height: calc(100dvh - 100px);
   }
 }

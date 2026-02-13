@@ -1,6 +1,8 @@
 .targetList {
-  background: #ff0000;
+  background: #e00000;
   height: 150px;
+  position: sticky;
+  bottom: 0;
 }
 
 .targetList ul {
@@ -33,6 +35,10 @@
 }
 
 @media screen and (max-width: 576px) {
+  .targetList {
+    height: 100px;
+  }
+
   .targetList img {
     width: 45px;
     height: 45px;
