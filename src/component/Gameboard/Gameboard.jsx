@@ -1,15 +1,21 @@
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import useDropdown from '../../hook/useDropdown/useDropdown';
 import TargetMenu from '../TargetMenu/TargetMenu';
 import styles from './Gameboard.module.css';
 
 const Gameboard = () => {
+  const [gameboardInfo, setGameState] = useState();
   const { open, close, visible, coord } = useDropdown();
   const gameboardRef = useRef();
   const menuRef = useRef();
+  const cordRef = useRef({ x: 0, y: 0 });
 
   const handleOnClick = e => {
-    if (visible) return close();
+    if (visible) {
+      cordRef.current = { x: 0, y: 0 };
+      return close();
+    }
+
     const rect = e.target.getBoundingClientRect();
     const gameboardRect = gameboardRef.current.getBoundingClientRect();
     const menuRect = menuRef.current.getBoundingClientRect();
@@ -26,22 +32,52 @@ const Gameboard = () => {
     let menuX = x;
     let menuY = y;
 
-    console.log(xPct, yPct);
+    cordRef.current = { x: xPct, y: yPct };
+
     if (e.clientX + menuWidth > gameboardRect.width) menuX -= menuWidth;
     if (e.clientY + menuHeight > gameboardRect.height) menuY -= menuHeight;
 
     open(menuX, menuY);
   };
 
+  useEffect(() => {
+    const getImageUrl = async () => {
+      const res = await fetch(
+        import.meta.env.VITE_API_BASE_URL + '/game/gameboard',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name: 'beach',
+          }),
+        },
+      );
+
+      const info = await res.json();
+
+      setGameState(info);
+    };
+
+    getImageUrl();
+  }, []);
+
   return (
-    <div className={styles.gameboard} ref={gameboardRef}>
-      <img
-        src='https://pub-6c975cd2df9342cc9994b0776938af47.r2.dev/Wheres-Waldo-Beach.webp'
-        alt="where's waldo beach"
-        onClick={handleOnClick}
-      />
-      <TargetMenu ref={menuRef} {...{ coord, visible }} />
-    </div>
+    gameboardInfo && (
+      <div className={styles.gameboard} ref={gameboardRef}>
+        <img
+          src={gameboardInfo.imageUrl}
+          alt="where's waldo beach"
+          onClick={handleOnClick}
+        />
+        <TargetMenu
+          ref={menuRef}
+          {...{ coord, visible, cordRef }}
+          levelId={gameboardInfo.id}
+        />
+      </div>
+    )
   );
 };
 
