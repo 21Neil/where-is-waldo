@@ -1,9 +1,10 @@
+import styles from './StartScreen.module.css'
+
 const StartScreen = ({ startGame }) => {
   return (
-    <>
-      <h1>Where's Waldo</h1>
+    <div className={styles.container}>
       <button onClick={startGame}>Start</button>
-    </>
+    </div>
   );
 };
 

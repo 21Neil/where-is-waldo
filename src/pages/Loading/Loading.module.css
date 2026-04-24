@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
-  color: #e60000;
+  color: var(--primary-color);
 }
 
 .loaderCircle {

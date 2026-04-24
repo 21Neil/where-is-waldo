@@ -1,5 +1,5 @@
 .targetList {
-  background: #e00000;
+  background: var(--primary-color);
   height: 150px;
   position: sticky;
   bottom: 0;

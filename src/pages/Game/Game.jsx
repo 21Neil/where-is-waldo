@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import StartScreen from '../../component/StartScreen/StartScreen';
 import Loading from '../Loading/Loading';
 import { gameService } from '../../services/gameService';
+import Counter from '../../component/Counter/Counter';
 
 const Game = () => {
   const [isImgLoaded, setImgLoaded] = useState(false);
@@ -33,16 +34,17 @@ const Game = () => {
 
   return (
     <main>
+      <Counter gameStarted={gameStarted} />
+
       {!isImgLoaded && <Loading />}
 
       {!gameStarted && isImgLoaded && <StartScreen startGame={startGame} />}
 
       {gameStarted && (
-        <>
-          <Gameboard gameboardInfo={gameboardInfo} />
-          <TargetList />
-        </>
+        <Gameboard gameboardInfo={gameboardInfo} />
       )}
+      
+      <TargetList />
     </main>
   );
 };

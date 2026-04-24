@@ -1,10 +1,10 @@
 .gameboard {
   position: relative;
-  height: calc(100dvh - 150px);
+  height: calc(100dvh - 250px);
   display: block;
   overflow: scroll;
   scrollbar-width: thin;
-  scrollbar-color: #e00000 white;
+  scrollbar-color: var(--primary-color) white;
 }
 
 .gameboard img {
