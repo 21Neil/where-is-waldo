@@ -1,14 +1,12 @@
+import { Outlet, useNavigation } from 'react-router';
 import './App.css';
-import Gameboard from './component/Gameboard/Gameboard';
-import TargetList from './component/TargetList/TargetList';
+import Loading from './pages/Loading/Loading';
 
 function App() {
-  return (
-    <main>
-      <Gameboard />
-      <TargetList />
-    </main>
-  );
+  const navigation = useNavigation();
+  const isNavigating = navigation.state === 'loading';
+
+  return isNavigating ? <Loading /> : <Outlet />;
 }
 
 export default App;

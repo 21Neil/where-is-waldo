@@ -1,10 +1,9 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 import useDropdown from '../../hook/useDropdown/useDropdown';
 import TargetMenu from '../TargetMenu/TargetMenu';
 import styles from './Gameboard.module.css';
 
-const Gameboard = () => {
-  const [gameboardInfo, setGameState] = useState();
+const Gameboard = ({ gameboardInfo }) => {
   const { open, close, visible, coord } = useDropdown();
   const gameboardRef = useRef();
   const menuRef = useRef();
@@ -39,29 +38,6 @@ const Gameboard = () => {
 
     open(menuX, menuY);
   };
-
-  useEffect(() => {
-    const getImageUrl = async () => {
-      const res = await fetch(
-        import.meta.env.VITE_API_BASE_URL + '/game/gameboard',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            name: 'beach',
-          }),
-        },
-      );
-
-      const info = await res.json();
-
-      setGameState(info);
-    };
-
-    getImageUrl();
-  }, []);
 
   return (
     gameboardInfo && (
