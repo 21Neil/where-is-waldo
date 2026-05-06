@@ -3,9 +3,10 @@ import Gameboard from '../../component/Gameboard/Gameboard';
 import TargetList from '../../component/TargetList/TargetList';
 import { useEffect, useState } from 'react';
 import StartScreen from '../../component/StartScreen/StartScreen';
-import Loading from '../Loading/Loading';
 import { gameService } from '../../services/gameService';
 import Counter from '../../component/Counter/Counter';
+import LoadingSpinner from '../../component/LoadingSpinner/LoadingSpinner';
+import styles from './Game.module.css';
 
 const Game = () => {
   const [isImgLoaded, setImgLoaded] = useState(false);
@@ -36,14 +37,16 @@ const Game = () => {
     <main>
       <Counter gameStarted={gameStarted} />
 
-      {!isImgLoaded && <Loading />}
+      {!isImgLoaded && (
+        <div className={styles.loadingContainer}>
+          <LoadingSpinner />
+        </div>
+      )}
 
       {!gameStarted && isImgLoaded && <StartScreen startGame={startGame} />}
 
-      {gameStarted && (
-        <Gameboard gameboardInfo={gameboardInfo} />
-      )}
-      
+      {gameStarted && <Gameboard gameboardInfo={gameboardInfo} />}
+
       <TargetList />
     </main>
   );

@@ -1,6 +1,6 @@
 import { Outlet, useNavigation } from 'react-router';
 import './App.css';
-import Loading from './pages/Loading/Loading';
+import Loading from './component/LoadingSpinner/LoadingSpinner';
 
 function App() {
   const navigation = useNavigation();
