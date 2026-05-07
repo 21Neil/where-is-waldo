@@ -8,3 +8,9 @@
   align-items: center;
   font-size: 2rem;
 }
+
+@media screen and (max-width: 576px) {
+  .container button {
+    height: calc(100dvh - 150px);
+  }  
+}

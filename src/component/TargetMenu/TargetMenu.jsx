@@ -1,25 +1,22 @@
 import styles from './TargetMenu.module.css';
+import { gameService } from '../../services/gameService';
 
-const TargetMenu = ({ ref, coord, visible, cordRef, levelId }) => {
+const TargetMenu = ({ ref, coord, visible, cordRef, levelId, close, setTargetFound }) => {
   const targetOnClick = async name => {
-    const res = await fetch(
-      import.meta.env.VITE_API_BASE_URL + '/game/check-location',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name,
-          levelId,
-          x: cordRef.current.x,
-          y: cordRef.current.y,
-        }),
-      },
-    );
+    const result = await gameService.checkLocation({
+      name,
+      levelId,
+      x: cordRef.current.x,
+      y: cordRef.current.y,
+    });
 
-    const result = await res.json();
-    console.log(result);
+    if (result.result) {
+      setTargetFound(prev => ({
+        ...prev,
+        [name]: true,
+      }));
+    }
+    close();
   };
 
   return (

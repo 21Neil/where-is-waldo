@@ -3,7 +3,7 @@ import useDropdown from '../../hook/useDropdown/useDropdown';
 import TargetMenu from '../TargetMenu/TargetMenu';
 import styles from './Gameboard.module.css';
 
-const Gameboard = ({ gameboardInfo }) => {
+const Gameboard = ({ gameboardInfo, setTargetFound }) => {
   const { open, close, visible, coord } = useDropdown();
   const gameboardRef = useRef();
   const menuRef = useRef();
@@ -49,7 +49,7 @@ const Gameboard = ({ gameboardInfo }) => {
         />
         <TargetMenu
           ref={menuRef}
-          {...{ coord, visible, cordRef }}
+          {...{ coord, visible, cordRef, close, setTargetFound }}
           levelId={gameboardInfo.id}
         />
       </div>
