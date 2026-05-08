@@ -1,7 +1,17 @@
 import styles from './TargetMenu.module.css';
 import { gameService } from '../../services/gameService';
 
-const TargetMenu = ({ ref, coord, visible, cordRef, levelId, close, setTargetFound }) => {
+const TargetMenu = ({
+  ref,
+  coord,
+  visible,
+  cordRef,
+  close,
+  foundTargetNames,
+  setFoundTargetNames,
+  levelId,
+  targets,
+}) => {
   const targetOnClick = async name => {
     const result = await gameService.checkLocation({
       name,
@@ -11,10 +21,7 @@ const TargetMenu = ({ ref, coord, visible, cordRef, levelId, close, setTargetFou
     });
 
     if (result.result) {
-      setTargetFound(prev => ({
-        ...prev,
-        [name]: true,
-      }));
+      setFoundTargetNames(result.foundTargetNames);
     }
     close();
   };
@@ -26,18 +33,16 @@ const TargetMenu = ({ ref, coord, visible, cordRef, levelId, close, setTargetFou
       ref={ref}
     >
       <ul>
-        <li>
-          <button onClick={() => targetOnClick('Waldo')}>Waldo</button>
-        </li>
-        <li>
-          <button onClick={() => targetOnClick('Wanda')}>Wanda</button>
-        </li>
-        <li>
-          <button onClick={() => targetOnClick('Wizard')}>Wizard</button>
-        </li>
-        <li>
-          <button onClick={() => targetOnClick('Odlaw')}>Odlaw</button>
-        </li>
+        {targets.map(target => (
+          <li key={target.name}>
+            <button
+              disabled={foundTargetNames.includes(target.name)}
+              onClick={() => targetOnClick(target.name)}
+            >
+              {target.name}
+            </button>
+          </li>
+        ))}
       </ul>
     </div>
   );

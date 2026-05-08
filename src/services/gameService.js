@@ -6,6 +6,7 @@ const apiPost = async (endpoint, body) => {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(body),
+      credentials: 'include',
     });
 
     if (!res.ok) throw new Error('連線失敗: ' + res.status);

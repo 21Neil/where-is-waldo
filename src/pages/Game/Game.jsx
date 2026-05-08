@@ -11,12 +11,7 @@ import styles from './Game.module.css';
 const Game = () => {
   const [isImgLoaded, setImgLoaded] = useState(false);
   const [gameStarted, setGameStarted] = useState(false);
-  const [targetFound, setTargetFound] = useState({
-    Waldo: false,
-    Wanda: false,
-    Wizard: false,
-    Odlaw: false,
-  });
+  const [foundTargetNames, setFoundTargetNames] = useState([]);
   const gameboardInfo = useLoaderData();
 
   const startGame = async () => {
@@ -51,9 +46,13 @@ const Game = () => {
 
       {!gameStarted && isImgLoaded && <StartScreen startGame={startGame} />}
 
-      {gameStarted && <Gameboard {...{gameboardInfo, setTargetFound}} />}
+      {gameStarted && (
+        <Gameboard
+          {...{ gameboardInfo, foundTargetNames, setFoundTargetNames }}
+        />
+      )}
 
-      <TargetList {...{targetFound}} />
+      <TargetList targets={gameboardInfo.targets} {...{ foundTargetNames }} />
     </main>
   );
 };

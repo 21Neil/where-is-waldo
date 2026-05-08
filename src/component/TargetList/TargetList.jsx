@@ -1,25 +1,23 @@
 import styles from './TargetList.module.css';
 
-const TargetList = ({ targetFound }) => {
+const TargetList = ({ targets, foundTargetNames }) => {
   return (
     <footer className={styles.targetList}>
       <ul>
-        <li className={targetFound.Waldo ? styles.found : ''}>
-          <img src='/src/assets/waldo.webp' alt='Waldo' />
-          <span>Waldo</span>
-        </li>
-        <li className={targetFound.Wanda ? styles.found : ''}>
-          <img src='/src/assets/wanda.webp' alt='Wanda' />
-          <span>Wanda</span>
-        </li>
-        <li className={targetFound.Wizard ? styles.found : ''}>
-          <img src='/src/assets/wizard.webp' alt='Wizard' />
-          <span>Wizard</span>
-        </li>
-        <li className={targetFound.Odlaw ? styles.found : ''}>
-          <img src='/src/assets/odlaw.webp' alt='Odlaw' />
-          <span>Odlaw</span>
-        </li>
+        {targets.map(target => (
+          <li
+            key={target.name}
+            className={
+              foundTargetNames.includes(target.name) ? styles.found : ''
+            }
+          >
+            <img
+              src={`/src/assets/${target.name.toLowerCase()}.webp`}
+              alt={target.name}
+            />
+            <span>Waldo</span>
+          </li>
+        ))}
       </ul>
     </footer>
   );

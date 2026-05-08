@@ -4,7 +4,8 @@
 
 :root {
   --primary-color: #e00000;
-  --primary-color-hover: #aa0000;
+  --primary-color-hover: #ff8a8a;
+  --primary-color-disabled: #aa0000;
 }
 
 body {
@@ -29,6 +30,11 @@ button {
 
 button:hover {
   background: var(--primary-color-hover);
+}
+
+button:disabled {
+  background: var(--primary-color-disabled);
+  cursor: default;
 }
 
 @media screen and (max-width: 576px) {

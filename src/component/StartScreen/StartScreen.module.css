@@ -1,6 +1,5 @@
 .container button {
   height: calc(100dvh - 250px);
-  background-color: var(--primary-color);
   border-top: 2px solid #ffffff;
   border-bottom: 2px solid #ffffff;
   display: flex;
