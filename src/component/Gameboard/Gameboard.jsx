@@ -7,6 +7,8 @@ const Gameboard = ({
   gameboardInfo,
   foundTargetNames,
   setFoundTargetNames,
+  setIsGameOver,
+  setScore
 }) => {
   const { open, close, visible, coord } = useDropdown();
   const gameboardRef = useRef();
@@ -60,6 +62,8 @@ const Gameboard = ({
             close,
             foundTargetNames,
             setFoundTargetNames,
+            setIsGameOver,
+            setScore
           }}
           levelId={gameboardInfo.id}
           targets={gameboardInfo.targets}

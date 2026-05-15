@@ -7,11 +7,14 @@ import { gameService } from '../../services/gameService';
 import Counter from '../../component/Counter/Counter';
 import LoadingSpinner from '../../component/LoadingSpinner/LoadingSpinner';
 import styles from './Game.module.css';
+import FinishModal from '../../component/FinishModal/FinishModal';
 
 const Game = () => {
   const [isImgLoaded, setImgLoaded] = useState(false);
   const [gameStarted, setGameStarted] = useState(false);
   const [foundTargetNames, setFoundTargetNames] = useState([]);
+  const [isGameOver, setIsGameOver] = useState(false);
+  const [score, setScore] = useState(null);
   const gameboardInfo = useLoaderData();
 
   const startGame = async () => {
@@ -36,7 +39,7 @@ const Game = () => {
 
   return (
     <main>
-      <Counter gameStarted={gameStarted} />
+      <Counter {...{ gameStarted, isGameOver }} />
 
       {!isImgLoaded && (
         <div className={styles.loadingContainer}>
@@ -48,11 +51,19 @@ const Game = () => {
 
       {gameStarted && (
         <Gameboard
-          {...{ gameboardInfo, foundTargetNames, setFoundTargetNames }}
+          {...{
+            gameboardInfo,
+            foundTargetNames,
+            setFoundTargetNames,
+            setIsGameOver,
+            setScore,
+          }}
         />
       )}
 
       <TargetList targets={gameboardInfo.targets} {...{ foundTargetNames }} />
+
+      <FinishModal {...{ isGameOver, score }} />
     </main>
   );
 };

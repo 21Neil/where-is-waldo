@@ -6,6 +6,7 @@
   --primary-color: #e00000;
   --primary-color-hover: #ff8a8a;
   --primary-color-disabled: #aa0000;
+  --green: #1EE000;
 }
 
 body {
@@ -35,6 +36,21 @@ button:hover {
 button:disabled {
   background: var(--primary-color-disabled);
   cursor: default;
+}
+
+input {
+  border: 1px #ffffff solid;
+  border-radius: 0.2em;
+  color: #ffffff;
+  padding: 0.25em 0.5em;
+  background-color: var(--primary-color);
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  background-color: #fff;
+  color: #000;
 }
 
 @media screen and (max-width: 576px) {

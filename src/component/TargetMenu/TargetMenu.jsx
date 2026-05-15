@@ -11,6 +11,8 @@ const TargetMenu = ({
   setFoundTargetNames,
   levelId,
   targets,
+  setIsGameOver,
+  setScore
 }) => {
   const targetOnClick = async name => {
     const result = await gameService.checkLocation({
@@ -22,6 +24,10 @@ const TargetMenu = ({
 
     if (result.result) {
       setFoundTargetNames(result.foundTargetNames);
+      if (result.isGameOver) {
+        setIsGameOver(result.isGameOver)
+        setScore(result.duration)
+      }
     }
     close();
   };
