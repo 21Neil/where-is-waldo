@@ -7,8 +7,8 @@ const Gameboard = ({
   gameboardInfo,
   foundTargetNames,
   setFoundTargetNames,
-  setIsGameOver,
-  setScore
+  gameOver,
+  setIsCheckingLocation
 }) => {
   const { open, close, visible, coord } = useDropdown();
   const gameboardRef = useRef();
@@ -56,17 +56,15 @@ const Gameboard = ({
         <TargetMenu
           ref={menuRef}
           {...{
-            coord,
-            visible,
             cordRef,
-            close,
             foundTargetNames,
             setFoundTargetNames,
-            setIsGameOver,
-            setScore
+            gameOver,
+            setIsCheckingLocation
           }}
           levelId={gameboardInfo.id}
           targets={gameboardInfo.targets}
+          dropdown={{ close, visible, coord }}
         />
       </div>
     )

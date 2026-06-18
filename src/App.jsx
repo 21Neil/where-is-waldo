@@ -1,12 +1,22 @@
-import { Outlet, useNavigation } from 'react-router';
+import { Outlet } from 'react-router';
 import './App.css';
-import Loading from './component/LoadingSpinner/LoadingSpinner';
+import { useEffect, useState } from 'react';
+import { registerLoadingListener } from './services/apiState';
+import LoadingOverlay from './component/LoadingOverlay/LoadingOverlay';
 
 function App() {
-  const navigation = useNavigation();
-  const isNavigating = navigation.state === 'loading';
+  const [globalLoading, setGlobalLoading] = useState(false);
 
-  return isNavigating ? <Loading /> : <Outlet />;
+  useEffect(() => {
+    registerLoadingListener(setGlobalLoading);
+  }, []);
+
+  return (
+    <>
+      {globalLoading && <LoadingOverlay />}
+      <Outlet />
+    </>
+  );
 }
 
 export default App;

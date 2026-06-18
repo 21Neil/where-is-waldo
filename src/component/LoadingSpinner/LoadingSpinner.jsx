@@ -1,8 +1,8 @@
 import styles from './LoadingSpinner.module.css';
 
-const LoadingSpinner = () => {
+const LoadingSpinner = ({ color }) => {
   return (
-    <div className={styles.container}>
+    <div className={styles.container + (color ? ` ${styles[color]}` : '')}>
       <svg
         xmlns='http://www.w3.org/2000/svg'
         width='24'

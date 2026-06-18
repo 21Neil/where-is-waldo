@@ -1,41 +1,42 @@
 import styles from './TargetMenu.module.css';
-import { gameService } from '../../services/gameService';
+import gameService from '../../services/gameService';
 
 const TargetMenu = ({
   ref,
-  coord,
-  visible,
+  dropdown,
   cordRef,
-  close,
   foundTargetNames,
   setFoundTargetNames,
   levelId,
   targets,
-  setIsGameOver,
-  setScore
+  gameOver,
+  setIsCheckingLocation,
 }) => {
   const targetOnClick = async name => {
+    dropdown.close();
+    setIsCheckingLocation(true);
+
     const result = await gameService.checkLocation({
       name,
       levelId,
       x: cordRef.current.x,
       y: cordRef.current.y,
     });
-
+    
+    setIsCheckingLocation(false);
+    
     if (result.result) {
       setFoundTargetNames(result.foundTargetNames);
       if (result.isGameOver) {
-        setIsGameOver(result.isGameOver)
-        setScore(result.duration)
+        gameOver(result);
       }
     }
-    close();
   };
 
   return (
     <div
-      className={`${styles.container} ${visible ? styles.visible : ''}`}
-      style={{ left: coord.x, top: coord.y }}
+      className={`${styles.container} ${dropdown.visible ? styles.visible : ''}`}
+      style={{ left: dropdown.coord.x, top: dropdown.coord.y }}
       ref={ref}
     >
       <ul>

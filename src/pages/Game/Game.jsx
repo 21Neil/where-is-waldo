@@ -1,25 +1,14 @@
 import { useLoaderData } from 'react-router';
-import Gameboard from '../../component/Gameboard/Gameboard';
-import TargetList from '../../component/TargetList/TargetList';
 import { useEffect, useState } from 'react';
-import StartScreen from '../../component/StartScreen/StartScreen';
-import { gameService } from '../../services/gameService';
-import Counter from '../../component/Counter/Counter';
-import LoadingSpinner from '../../component/LoadingSpinner/LoadingSpinner';
-import styles from './Game.module.css';
-import FinishModal from '../../component/FinishModal/FinishModal';
+import GameStage from '../../component/GameStage/GameStage';
 
 const Game = () => {
   const [isImgLoaded, setImgLoaded] = useState(false);
-  const [gameStarted, setGameStarted] = useState(false);
-  const [foundTargetNames, setFoundTargetNames] = useState([]);
-  const [isGameOver, setIsGameOver] = useState(false);
-  const [score, setScore] = useState(null);
+  const [gameKey, setGameKey] = useState(0);
   const gameboardInfo = useLoaderData();
 
-  const startGame = async () => {
-    setGameStarted(true);
-    gameService.startGame({ levelId: gameboardInfo.id });
+  const handleRestart = () => {
+    setGameKey(prev => prev + 1);
   };
 
   useEffect(() => {
@@ -38,33 +27,9 @@ const Game = () => {
   }, [gameboardInfo.imageUrl]);
 
   return (
-    <main>
-      <Counter {...{ gameStarted, isGameOver }} />
-
-      {!isImgLoaded && (
-        <div className={styles.loadingContainer}>
-          <LoadingSpinner />
-        </div>
-      )}
-
-      {!gameStarted && isImgLoaded && <StartScreen startGame={startGame} />}
-
-      {gameStarted && (
-        <Gameboard
-          {...{
-            gameboardInfo,
-            foundTargetNames,
-            setFoundTargetNames,
-            setIsGameOver,
-            setScore,
-          }}
-        />
-      )}
-
-      <TargetList targets={gameboardInfo.targets} {...{ foundTargetNames }} />
-
-      <FinishModal {...{ isGameOver, score }} />
-    </main>
+    <>
+      <GameStage key={gameKey} onRestart={handleRestart} {...{ gameboardInfo, isImgLoaded }} />
+    </>
   );
 };
 

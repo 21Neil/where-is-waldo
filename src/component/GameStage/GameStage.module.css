@@ -1,3 +1,7 @@
 .loadingContainer {
   height: calc(100dvh - 250px);
 }
+
+.progress {
+  cursor: progress;
+}

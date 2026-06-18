@@ -1,0 +1,12 @@
+.listHeader, .listBody li {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  span:nth-child(3) {
+    justify-self: end;
+  }
+}
+
+.userRank {
+  margin: 1em 0;
+  font-size: 1.2rem;
+}
