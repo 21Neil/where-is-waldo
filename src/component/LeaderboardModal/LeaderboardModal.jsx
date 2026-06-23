@@ -59,10 +59,10 @@ const LeaderboardModal = ({
         </p>
       )}
       <div className={modalStyles.btnGroup}>
-        <Link to={'/'}>
-          <button type='button'>Back to Menu</button>
+        <Link className={modalStyles.btn} to={'/'}>
+          Back to Menu
         </Link>
-        <button type='button' onClick={onRestart}>
+        <button className={modalStyles.btn} type='button' onClick={onRestart}>
           Try Again
         </button>
       </div>

@@ -39,8 +39,8 @@ const FinishModal = ({ isFinishModalOpen, score, onFinishModalSubmit, onViewLead
           />
         </div>
         <div className={modalStyles.btnGroup}>
-          <button type='button' onClick={onViewLeaderboard}>View Leaderboard</button>
-          <button type='submit'>Save to Leaderboard</button>
+          <button className={modalStyles.btn} type='button' onClick={onViewLeaderboard}>View Leaderboard</button>
+          <button className={modalStyles.btn} type='submit'>Save to Leaderboard</button>
         </div>
       </form>
     </Modal>

@@ -1,11 +1,15 @@
 .container button {
   height: calc(100dvh - 250px);
+  width: 100%;
+  cursor: pointer;
   border-top: 2px solid #ffffff;
   border-bottom: 2px solid #ffffff;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 2rem;
+  background: var(--primary-color);
+  color: #ffffff;
 }
 
 @media screen and (max-width: 576px) {

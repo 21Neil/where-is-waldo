@@ -15,7 +15,7 @@ const TargetList = ({ targets, foundTargetNames }) => {
               src={`/src/assets/${target.name.toLowerCase()}.webp`}
               alt={target.name}
             />
-            <span>Waldo</span>
+            <span>{target.name}</span>
           </li>
         ))}
       </ul>

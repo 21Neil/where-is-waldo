@@ -5,9 +5,12 @@
   margin-bottom: 1em;
 }
 
-.btnGroup button {
+.btn {
   background-color: #fff;
   color: var(--primary-color);
   border-radius: 1em;
   width: auto;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem 0.8rem;
 }

@@ -10,7 +10,7 @@
 }
 
 body {
-  font-family: 'Times New Roman', Times, serif;
+  font-family: Kavoon;
 }
 
 ul {
@@ -19,14 +19,8 @@ ul {
   margin: 0;
 }
 
-button {
-  background: var(--primary-color);
-  color: #ffffff;
-  width: 100%;
-  text-align: left;
-  padding: 0.5rem 0.8rem;
-  border: none;
-  cursor: pointer;
+a {
+  text-decoration: none;
 }
 
 button:hover {

@@ -42,6 +42,8 @@ const Gameboard = ({
     if (e.clientX + menuWidth > gameboardRect.width) menuX -= menuWidth;
     if (e.clientY + menuHeight > gameboardRect.height) menuY -= menuHeight;
 
+    console.log(xPct, yPct)
+
     open(menuX, menuY);
   };
 

@@ -10,3 +10,13 @@
 .container ul {
   width: 100%;
 }
+
+.btn {
+  background: var(--primary-color);
+  color: #ffffff;
+  text-align: left;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem 0.8rem;
+}

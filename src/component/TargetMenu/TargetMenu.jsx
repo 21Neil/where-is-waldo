@@ -45,6 +45,7 @@ const TargetMenu = ({
             <button
               disabled={foundTargetNames.includes(target.name)}
               onClick={() => targetOnClick(target.name)}
+              className={styles.btn}
             >
               {target.name}
             </button>
