@@ -8,10 +8,18 @@
   display: flex;
   flex-direction: column;
   gap: 2em;
+  align-items: center;
 }
 
 .inputGroup {
   display: flex;
   gap: 1em;
   align-items: center;
+}
+
+@media screen and (max-width: 576px) {
+  .inputGroup {
+    flex-direction: column;
+    align-items: start;
+  }  
 }
